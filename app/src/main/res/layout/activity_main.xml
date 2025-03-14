@@ -18,17 +18,58 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.595" />
+        app:layout_constraintVertical_bias="0.132" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btSort"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Clique aqui"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.527"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.412" />
+        app:layout_constraintVertical_bias="0.342" />
+
+    <EditText
+        android:id="@+id/edMin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="126dp"
+        android:layout_marginEnd="24dp"
+        android:ems="10"
+        android:inputType="number|numberDecimal"
+        android:text="Name"
+        app:layout_constraintEnd_toStartOf="@+id/edMax"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edMax"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:ems="10"
+        android:inputType="number|numberDecimal"
+        android:text="Name"
+        app:layout_constraintBottom_toBottomOf="@+id/edMin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/edMin"
+        app:layout_constraintTop_toTopOf="@+id/edMin" />
+
+    <TextView
+        android:id="@+id/TxResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="43dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/btSort"
+        app:layout_constraintTop_toBottomOf="@+id/btSort" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
