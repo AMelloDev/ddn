@@ -3,17 +3,11 @@ package com.ifsc.code;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         button = findViewById(R.id.button);
         button.setOnClickListener(V ->{
             Intent i = new Intent(getApplicationContext(),MsgActivity.class);
-            editTextMsg = findViewById(R.id.editText);
+            editTextMsg = findViewById(R.id.editTextAltura);
             String mensagem = String.valueOf(editTextMsg.getText());
             i.putExtra("msg", mensagem);
             startActivity(i);

@@ -8,10 +8,10 @@
     tools:context=".MsgActivity">
 
     <TextView
-        android:id="@+id/msg"
+        android:id="@+id/resultadoIMC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="368dp"
+        android:layout_marginTop="248dp"
         android:text="ActivityMsg"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
