@@ -13,19 +13,55 @@ public class MainActivity extends AppCompatActivity {
 
 
     Button button;
-    EditText editTextMsg;
+    EditText editTextAltura, editTextPeso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         button = findViewById(R.id.button);
+        editTextAltura = findViewById(R.id.editTextAltura);
+        editTextPeso = findViewById(R.id.editTextPeso);
+
         button.setOnClickListener(V ->{
-            Intent i = new Intent(getApplicationContext(),MsgActivity.class);
-            editTextMsg = findViewById(R.id.editTextAltura);
-            String mensagem = String.valueOf(editTextMsg.getText());
-            i.putExtra("msg", mensagem);
-            startActivity(i);
+            String peso = editTextPeso.getText().toString().trim();
+            String altura = editTextAltura.getText().toString().trim();
+
+            if(!peso.isEmpty() && !altura.isEmpty()){
+                try {
+                    float pesoF = Float.parseFloat(peso);
+                    float alturaF = Float.parseFloat(altura);
+
+                    float imc = pesoF/(alturaF*alturaF);
+
+                    String saude;
+                    if (imc < 18.5) {
+                        saude = "Abaixo do peso";
+                    } else if (imc >= 18.5 && imc < 24.9) {
+                        saude = "Peso saudável";
+                    } else if (imc >= 25 && imc < 29.9) {
+                        saude = "Sobrepeso";
+                    } else if (imc >= 30 && imc < 34.9) {
+                        saude = "Obesidade Grau I";
+                    } else if (imc >= 35 && imc < 39.9) {
+                        saude = "Obesidade Grau II";
+                    } else {
+                        saude = "Obesidade Grau III (Mórbida)";
+                    }
+
+                    Intent i = new Intent(getApplicationContext(),MsgActivity.class);
+                    i.putExtra("imc", imc);
+                    i.putExtra("condicao", saude);
+                    startActivity(i);
+                }catch (NumberFormatException e){
+                    Toast.makeText(this, "Preencha valores Válidos", Toast.LENGTH_LONG).show();
+
+                }
+            }else {
+                Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_LONG).show();
+            }
+
+
         });
 
         Log.d("CicloDeVida", "onCreate");
