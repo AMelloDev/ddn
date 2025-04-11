@@ -49,6 +49,7 @@ public class SimplePaint extends View {
         super.onDraw(canvas);
         canvas.drawPath(currentPath,currentPaint);
     }
+    // cada path terá seu próprio paint
 
     public boolean onTouchEvent(MotionEvent event){
 
@@ -71,5 +72,9 @@ public class SimplePaint extends View {
     public void clearDraw(){
         currentPath.reset();
         invalidate();
+    }
+
+    public void changeColor(int color){
+        currentPaint.setColor(color);
     }
 }
