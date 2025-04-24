@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         buttonclear = findViewById(R.id.buttonclear);
-        simplePaint = findViewById(R.id.simplePaint);
+        simplePaint = findViewById(R.id.simplePaint);;
         buttoncolor = findViewById(R.id.colorpick);
 
         buttoncolor.setOnClickListener(v ->{

@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="33dp"
         android:layout_marginTop="14dp"
-        android:text="Button"
+        android:text="Borracha"
         app:layout_constraintStart_toStartOf="@+id/simplePaint"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="11dp"
         android:layout_marginTop="16dp"
-        android:text="Button"
+        android:text="Troca cor"
         app:layout_constraintStart_toEndOf="@+id/buttonclear"
         app:layout_constraintTop_toTopOf="parent" />
 
