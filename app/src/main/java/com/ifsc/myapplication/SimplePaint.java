@@ -24,6 +24,7 @@ public class SimplePaint extends View {
     Path currentPath;
     Paint currentPaint;
     ColorDrawable currentColor;
+    private String shapeType = "linha";
 
     public SimplePaint(Context context) {
         super(context);
@@ -73,22 +74,46 @@ public class SimplePaint extends View {
     // cada path terá seu próprio paint
 
     public boolean onTouchEvent(MotionEvent event){
+        float x = event.getRawX();
+        float y = event.getRawY();
 
         switch (event.getAction()){
+
             case MotionEvent.ACTION_DOWN:
-                x0 = event.getRawX();
-                y0 = event.getRawY();
-                currentPath.moveTo(x0,y0);
+                x0 = x;
+                y0 = y;
+
+                if (shapeType.equals("linha")) {
+                    currentPath.moveTo(x0, y0);
+                }
                 invalidate();
                 return true;
             case MotionEvent.ACTION_MOVE:
-                currentPath.lineTo(event.getRawX() ,event.getY());
+                if(shapeType.equals("linha")) {
+                    currentPath.lineTo(x, y);
+                }
                 this.invalidate();
                 return true;
             case MotionEvent.ACTION_UP:
-                currentPath.lineTo(event.getRawX() ,event.getY());
-                paintList.add(currentPaint);
-                pathList.add(currentPath);
+                Paint paint = new Paint(currentPaint);
+                Path path = new Path();
+
+                if(shapeType.equals("linha")) {
+                    path.set(currentPath);
+                    pathList.add(path);
+                    paintList.add(paint);
+
+                } else if (shapeType.equals("retangulo")) {
+                    path.addRect(x0,y0,x,y,Path.Direction.CW);
+                    pathList.add(path);
+                    paintList.add(paint);
+                } else if (shapeType.equals("circle")) {
+                    float raio = (float) Math.hypot(x-x0,y-y0);
+                    path.addCircle(x0,y0, raio, Path.Direction.CW);
+                    pathList.add(path);
+                    paintList.add(paint);
+                }
+                invalidate();
                 initLayer();
                 return true;
         }
@@ -96,7 +121,21 @@ public class SimplePaint extends View {
         return true;
     }
 
+    public  void desfazer(){
+        pathList.remove(pathList.size()-1);
+        paintList.remove(paintList.size()-1);
+        invalidate();
+    }
+
+    public void escolheForma(String forma){
+        this.shapeType= forma;
+
+    }
+
+
     public void clearDraw(){
+        pathList.clear();
+        paintList.clear();
         currentPath.reset();
         invalidate();
     }

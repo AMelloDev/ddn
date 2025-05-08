@@ -18,7 +18,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     Button buttonclear;
-    Button buttoncolor;
+    Button buttoncolor, buttonCirc, buttonRet, buttonLin, buttonDesf;
     SimplePaint simplePaint;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,10 @@ public class MainActivity extends AppCompatActivity {
         buttonclear = findViewById(R.id.buttonclear);
         simplePaint = findViewById(R.id.simplePaint);;
         buttoncolor = findViewById(R.id.colorpick);
+        buttonLin = findViewById(R.id.buttonLin);
+        buttonRet =findViewById(R.id.buttonRet);
+        buttonCirc = findViewById(R.id.buttonCirc);
+        buttonDesf = findViewById(R.id.buttonDesf);
 
         buttoncolor.setOnClickListener(v ->{
             new ColorPickerDialog.Builder(this)
@@ -57,6 +61,25 @@ public class MainActivity extends AppCompatActivity {
         buttonclear.setOnClickListener(v ->{
             simplePaint.clearDraw();
         });
+
+        buttonCirc.setOnClickListener(v ->{
+            simplePaint.escolheForma("circle");
+        });
+
+        buttonRet.setOnClickListener(v ->{
+            simplePaint.escolheForma("retangulo");
+        });
+
+        buttonDesf.setOnClickListener(v ->{
+            simplePaint.desfazer();
+        });
+
+        buttonLin.setOnClickListener(v ->{
+            simplePaint.escolheForma("linha");
+        });
+
+
+
     }
 
 
